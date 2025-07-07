@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resume Analysis Results</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f3f4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#111518]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_535)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_535"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">Resume Analyzer</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="/">Home</a>
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">About</a>
+              <a class="text-[#111518] text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <a
+              href="/"
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#1993e5] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Analyze Resume</span>
+            </a>
+          </div>
+        </header>
+        <div class="px-4 md:px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="p-4 @container">
+              <div class="flex flex-col items-stretch justify-start rounded-xl @xl:flex-row @xl:items-start">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPI7NgNPRCaZFMFf0lZ06rWgZNsPwo5WGnSEuBIcoU0vbvWcGUoh3Tu8Oij0nldfLu76so5WsQJJitSl83UaOTjJA8FCM7-pz7cfC8qRdMDqpTHVq2V46xWtkPAqh21Z_zRk1PmssU6UVf-4VrrGgux6rmroyXyVst6h4nUsadYc1VJvhQEc989dAy_DHrW0OpPj-qavWpfoL-hpvYeWfY0RH5Z61sqTqGXQpEG8AdVrKayGPzxeysfaiZB0ZSGjM3oXMA0D6CtVIl");'
+                ></div>
+                <div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-4 @xl:px-4">
+                  <p class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em]">Resume Analysis Results</p>
+                  <div class="flex items-end gap-3 justify-between">
+                    <p class="text-[#637988] text-base font-normal leading-normal">
+                      Here's a detailed analysis of your resume to help you improve your chances of landing your dream job.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ATS Score -->
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">ATS Score</h2>
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between">
+                <p class="text-[#111518] text-base font-medium leading-normal">ATS Compatibility</p>
+                <p class="text-[#111518] text-sm font-normal leading-normal"><%= analysis["ATS Score"] %>%</p>
+              </div>
+              <div class="rounded bg-[#dce1e5]">
+                <div class="h-2 rounded bg-[#111518]" style="width: <%= analysis["ATS Score"] %>%;"></div>
+              </div>
+              <p class="text-[#637988] text-sm font-normal leading-normal">
+                <%= analysis["ATS Score"] >= 80 ? "Your resume is well-optimized for Applicant Tracking Systems." : "Your resume could be further optimized for ATS." %>
+              </p>
+            </div>
+            <!-- Missing Keywords -->
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Missing Keywords</h2>
+            <div class="flex gap-3 p-3 flex-wrap pr-4">
+              <% analysis["Missing Keywords"].forEach(function(keyword) { %>
+                <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#ffb09c] pl-4 pr-4">
+                  <p class="text-[#111518] text-sm font-medium leading-normal"><%= keyword %></p>
+                </div>
+              <% }); %>
+            </div>
+            <!-- Section Suggestions -->
+            <% const sections = analysis["Section Suggestions"]; %>
+            <% ["Summary", "Skills", "Work Experience", "Projects", "Education"].forEach(function(section) { %>
+              <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5"><%= section %> Suggestions</h2>
+              <div class="flex flex-col p-4 gap-3">
+                <details class="flex flex-col rounded-xl border border-[#dce1e5] bg-white px-[15px] py-[7px] group" open>
+                  <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                    <p class="text-[#111518] text-sm font-medium leading-normal">Improve your <%= section.toLowerCase() %> section</p>
+                    <div class="text-[#111518] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                      </svg>
+                    </div>
+                  </summary>
+                  <p class="text-[#637988] text-sm font-normal leading-normal pb-2">
+                    <%= sections[section] %>
+                  </p>
+                </details>
+              </div>
+            <% }); %>
+            <!-- Action Verbs -->
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Suggested Action Verbs</h2>
+            <div class="flex gap-3 p-3 flex-wrap pr-4">
+              <% analysis["Action Verbs Suggestions"].forEach(function(verb) { %>
+                <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#6b6bd7] pl-4 pr-4">
+                  <p class="text-[#111518] text-sm font-medium leading-normal"><%= verb %></p>
+                </div>
+              <% }); %>
+            </div>
+            <!-- Highlights -->
+            <h2 class="text-[#111518] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Highlights</h2>
+            <p class="text-[#111518] text-base font-normal leading-normal pb-3 pt-1 px-4">
+              <%= analysis["Highlights"] %>
+            </p>
+            <!-- Review Summary -->
+            <div class="p-4">
+              <div class="flex flex-col md:flex-row items-stretch justify-between gap-6 rounded-xl bg-[#f8fafc] shadow">
+                <div class="flex flex-1 flex-col gap-1 justify-center p-6">
+                  <p class="text-[#111518] tracking-light text-2xl font-bold leading-tight mb-2">Review Summary</p>
+                  <p class="text-[#637988] text-base font-medium leading-normal">
+                    <%= analysis["Review Summary"] %>
+                  </p>
+                </div>
+                <div class="flex items-center justify-center md:w-72 w-full p-4">
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3KQw9H-1ddz8cVvy4Iu-cxLWn-ALMWV7I6XicEL_U7Mn1kyZ7FRAxSef9UCf2fMPGtNEuXHJF4-9LqhUqMGWWmyHK7afNBD_7PjcPw-d9SoQ84wrZxxJKY1muzC5wTUSNWN6cjQzQkdOqiD1cNoSVRZ4TGdIYGf9q0ty2tsMfanjHUE9g7MMoqUR5E4FtUCdXvPjcfECgtDfZZbx-D0g8lV-NwIv4CM7SOyXyylgkLJET74-IqGQboAPo9FjyPasTN9tc-iDsYWIs"
+                    alt="Review Summary Illustration"
+                    class="rounded-xl object-cover w-full h-48 md:h-56"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex px-4 py-3 justify-center">
+              <a
+                href="/"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#1993e5] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Analyze Another Resume</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

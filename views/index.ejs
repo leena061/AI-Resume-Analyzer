@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Resume Analyzer</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex min-h-screen flex-col bg-gradient-to-br from-[#f8fafc] to-[#e0e7ff] overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between border-b border-solid border-b-[#f1f1f4] px-10 py-3 bg-white/80 backdrop-blur-md shadow-sm">
+          <div class="flex items-center gap-4 text-[#131217]">
+            <div class="size-8 rounded-lg bg-[#e0e7ff] flex items-center justify-center shadow">
+              <svg viewBox="0 0 48 48" fill="none" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_6_543)">
+                  <path
+                    d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z"
+                    fill="#6366f1"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_6_543"><rect width="48" height="48" fill="white"></rect></clipPath>
+                </defs>
+              </svg>
+            </div>
+            <h2 class="text-[#131217] text-xl font-bold leading-tight tracking-[-0.015em]">AI Resume Analyzer</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#6366f1] text-sm font-medium hover:underline transition" href="#">Home</a>
+              <a class="text-[#131217] text-sm font-medium hover:underline transition" href="#">About</a>
+              <a class="text-[#131217] text-sm font-medium hover:underline transition" href="#">Contact</a>
+            </div>
+            <div
+              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[#6366f1] shadow"
+              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGDSjgZBWBgmrsGy0Hp0lwz_VWll3KQ9urQzK7bHm_d--U7445p1QN6htOUxth8BYaIRkUtDFyDUqBOQzIj5N9HAtQ9afEDEfvM_lGpbSyxmMDtHnRBtQai_Ro9opi6uX8jXYninRwzKHmw8Gy_mtIG7wXSeR15EvngPArQ3hzwYQhd4H04A_zmdK1EJsSvsRGwilu4n7Yyjhz6WXqR3XACMl4_tWBDX7QPMjZw_RVsRS-Dcz4aHSbKgFLIyrCp5keVKfnqbtrRJb9");'
+            ></div>
+          </div>
+        </header>
+        <main class="flex-1 flex flex-col items-center justify-center px-4 md:px-0">
+          <div class="w-full max-w-xl mx-auto mt-10 mb-6 bg-white/90 rounded-2xl shadow-lg p-8">
+            <h2 class="text-[#131217] text-2xl md:text-3xl font-extrabold leading-tight text-center pb-3 pt-2">Get tailored resume feedback to land your dream job.</h2>
+            <form action="/analyze" method="POST" enctype="multipart/form-data" class="flex flex-col gap-6 mt-6">
+              <label class="flex flex-col gap-2">
+                <span class="text-[#131217] text-base font-medium">Resume (PDF only)</span>
+                <input
+                  type="file"
+                  name="resume"
+                  id="resume"
+                  accept="application/pdf"
+                  required
+                  class="form-input w-full rounded-xl border border-[#dedce4] bg-white focus:border-[#6366f1] h-14 px-4 text-base font-normal text-[#131217] shadow-sm"
+                />
+              </label>
+              <label class="flex flex-col gap-2">
+                <span class="text-[#131217] text-base font-medium">Job Description</span>
+                <textarea
+                  name="jobdesc"
+                  id="jobdesc"
+                  rows="7"
+                  required
+                  placeholder="Paste the job description here..."
+                  class="form-input w-full rounded-xl border border-[#dedce4] bg-white focus:border-[#6366f1] min-h-36 px-4 py-3 text-base font-normal text-[#131217] shadow-sm"
+                ></textarea>
+              </label>
+              <% if (error) { %>
+                <div class="text-red-600 bg-red-50 border border-red-200 rounded p-3 text-center font-semibold"><%= error %></div>
+              <% } %>
+              <button
+                type="submit"
+                class="mt-2 flex items-center justify-center rounded-full h-12 px-8 bg-gradient-to-r from-[#6366f1] to-[#60a5fa] text-white text-lg font-bold shadow-lg hover:from-[#60a5fa] hover:to-[#6366f1] transition"
+              >
+                <span class="truncate">Analyze Resume</span>
+              </button>
+            </form>
+          </div>
+          <section class="w-full max-w-6xl mx-auto mt-6 mb-10 px-8">
+            <h2 class="text-[#131217] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 text-center">How It Works</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+              <!-- Step 1 -->
+              <div class="flex flex-col rounded-xl bg-white/90 p-6 min-h-[320px] shadow-md hover:shadow-xl transition group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl mb-5 min-h-[120px]"
+                  style='background-image: url("https://www.jobhero.com/resources/wp-content/uploads/2024/09/Upload.png");'
+                ></div>
+                <p class="text-[#131217] text-base font-bold leading-tight mb-1">Upload Your Resume</p>
+                <p class="text-[#6e6685] text-sm font-normal leading-normal">Upload your resume in PDF format using the upload option above.</p>
+              </div>
+              <!-- Step 2 -->
+              <div class="flex flex-col rounded-xl bg-white/90 p-6 min-h-[320px] shadow-md hover:shadow-xl transition group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl mb-5 min-h-[120px]"
+                  style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD7BmJUAUW7fFv9VXJ9ODfEhWmZ60xo7enRI_N2xzQyLaUFIcYvk7qDy_yg7hMsObQdVVicxdfjT8QgNd0qU2a7-DhCe9uUlSIOghySzqXd5kgMidpmbg9O4diUaWXOWygbe7WvR9FrxEHlfk9nfV2bKmXpUp66VrInM3rOlddQqzLdd9y_Gr3caeBydWMKbMSBR3enP3zeGoXU6279EMG5xbqxDA8qpQTjFMlVweMbWuXbGrSd2o-Fus_ou9Pj_-30VAh0suOGcssX");'
+                ></div>
+                <p class="text-[#131217] text-base font-bold leading-tight mb-1">Paste Job Description</p>
+                <p class="text-[#6e6685] text-sm font-normal leading-normal">Copy and paste the job description of the role you’re applying for.</p>
+              </div>
+              <!-- Step 3 -->
+              <div class="flex flex-col rounded-xl bg-white/90 p-6 min-h-[320px] shadow-md hover:shadow-xl transition group">
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl mb-5 min-h-[120px]"
+                  style='background-image: url("https://www.jobhero.com/resources/wp-content/uploads/2024/09/Check-your-report.png");'
+                ></div>
+                <p class="text-[#131217] text-base font-bold leading-tight mb-1">Get Instant Results</p>
+                <p class="text-[#6e6685] text-sm font-normal leading-normal">
+                  Click “Analyze Resume” and receive your ATS score along with smart suggestions to improve your resume. You’ll receive a detailed analysis, including missing
+                  keywords, section-wise suggestions, and action-oriented tips to boost your chances of getting shortlisted.
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-col p-4 gap-3 mt-6">
+              <details class="flex flex-col rounded-xl bg-[#f1f1f4] px-4 py-2 group" open>
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#131217] text-sm font-medium leading-normal">What is ATS Score?</p>
+                  <div class="text-[#131217] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <p class="text-[#6e6685] text-sm font-normal leading-normal pb-2">
+                  75%+ of resumes are rejected by ATS before reaching recruiters. ATS checks for specific keywords from the job posting. A higher score increases your chance of getting shortlisted. Pro Tip: Tailor your resume for each job application — our tool helps you do that in seconds.
+                </p>
+              </details>
+              <details class="flex flex-col rounded-xl bg-[#f1f1f4] px-4 py-2 group">
+                <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+                  <p class="text-[#131217] text-sm font-medium leading-normal">Why is ATS Score Important?</p>
+                  <div class="text-[#131217] group-open:rotate-180" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                      <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                    </svg>
+                  </div>
+                </summary>
+                <p class="text-[#6e6685] text-sm font-normal leading-normal pb-2">
+                  First impressions matter! A higher ATS score means your resume is more likely to be seen by recruiters. Our analyzer helps you optimize for the best results.
+                </p>
+              </details>
+            </div>
+            <div class="flex px-4 py-3 justify-center">
+              <a
+                href="#resume"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 bg-[#6366f1] text-white text-sm font-bold leading-normal tracking-[0.015em] shadow hover:bg-[#4338ca] transition"
+              >
+                <span class="truncate">Start Your Free Resume Analysis</span>
+              </a>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

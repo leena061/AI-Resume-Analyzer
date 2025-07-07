@@ -1,0 +1,196 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  min-height: 100vh;
+}
+
+header {
+  background: #222f3e;
+  color: #fff;
+  padding: 32px 0 24px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(34,47,62,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.logo-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+h1 {
+  margin: 0 0 6px 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #b2bec3;
+  font-weight: 400;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 70vh;
+  padding: 32px 0;
+}
+
+.analyze-form, .result-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 36px 40px 28px 40px;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.analyze-form label {
+  font-weight: 600;
+  color: #222f3e;
+  margin-bottom: 6px;
+  display: block;
+  margin-top: 18px;
+}
+
+.analyze-form input[type="file"],
+.analyze-form textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 0 0;
+  border: 1.5px solid #b2bec3;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border 0.2s;
+  resize: vertical;
+  min-height: 48px;
+}
+
+.analyze-form textarea:focus {
+  border: 1.5px solid #45a049;
+  outline: none;
+}
+
+.analyze-form button {
+  background: linear-gradient(90deg, #35424a 60%, #45a049 100%);
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  margin-top: 28px;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(69,160,73,0.08);
+}
+
+.analyze-form button:hover {
+  background: linear-gradient(90deg, #45a049 60%, #35424a 100%);
+}
+
+.error {
+  color: #e74c3c;
+  background: #fbeee6;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 18px;
+  text-align: center;
+}
+
+.result-card {
+  margin-top: 32px;
+}
+
+.ats-score h2 {
+  color: #45a049;
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background: #e0eafc;
+  color: #222f3e;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+.analyze-another {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 24px;
+  background: #222f3e;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.analyze-another:hover {
+  background: #45a049;
+}
+
+details {
+  margin-bottom: 18px;
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+details[open] summary {
+  color: #45a049;
+}
+
+summary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .analyze-form, .result-card {
+    padding: 18px 8px 18px 8px;
+    width: 98%;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+}
