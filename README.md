@@ -58,7 +58,7 @@ This tool ensures your resume is well-optimized for ATS systems.
 ---
 
 ## 🚀 How To Use This Project
-###Clone the repository;
+###1.Clone the repository;
 ```bash
 git clone https://github.com/leena061/AI-Resume-Analyzer.git
 cd AI-Resume-Analyzer
