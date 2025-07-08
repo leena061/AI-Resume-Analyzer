@@ -58,9 +58,21 @@ This tool ensures your resume is well-optimized for ATS systems.
 ---
 
 ## 🚀 How To Use This Project
+###Clone the repository;
 ```bash
 git clone https://github.com/leena061/AI-Resume-Analyzer.git
 cd AI-Resume-Analyzer
+```
+###2.Install Dependencies:
+```bash
 npm install
+```
+###3. Set Up Environment Variables:
+Create a .env file in the root directory and add your Gemini AI API key like this:
+```bash
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+###4. Start The Application:
+```bash
 npm start
-
+```
