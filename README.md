@@ -11,7 +11,7 @@
 
 **AI Resume Analyzer** is a full-stack web application designed to help job seekers improve their resumes by analyzing them against any job description using AI-powered analysis.
 
-The app calculates an **ATS (Applicant Tracking System) score**, identifies missing keywords, and provides section-wise suggestions to make resumes more effective and tailored to specific job postings.
+The app calculates an **ATS (Applicant Tracking System) score**, identifies missing keywords, and provides section-wise suggestions.
 
 This tool can greatly enhance your chances of getting shortlisted by ensuring your resume passes ATS filters.
 
@@ -58,11 +58,9 @@ This tool ensures your resume is well-optimized for ATS systems.
 ---
 
 ## 🚀 How To Use This Project
-
- ###1. Clone the Repository:
 ```bash
 git clone https://github.com/leena061/AI-Resume-Analyzer.git
 cd AI-Resume-Analyzer
-###2.Install Dependencies
-```bash
 npm install
+npm start
+
